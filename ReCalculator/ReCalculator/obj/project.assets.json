@@ -8,23 +8,23 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\lab10.LAB-RANGEL\\.nuget\\packages\\": {},
+    "C:\\Users\\lab10\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lab10.LAB-RANGEL\\source\\repos\\ReCalculator\\ReCalculator\\ReCalculator.csproj",
+      "projectUniqueName": "C:\\Users\\lab10\\Downloads\\ReCalculator-main\\ReCalculator\\ReCalculator\\ReCalculator.csproj",
       "projectName": "ReCalculator",
-      "projectPath": "C:\\Users\\lab10.LAB-RANGEL\\source\\repos\\ReCalculator\\ReCalculator\\ReCalculator.csproj",
-      "packagesPath": "C:\\Users\\lab10.LAB-RANGEL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lab10.LAB-RANGEL\\source\\repos\\ReCalculator\\ReCalculator\\obj\\",
+      "projectPath": "C:\\Users\\lab10\\Downloads\\ReCalculator-main\\ReCalculator\\ReCalculator\\ReCalculator.csproj",
+      "packagesPath": "C:\\Users\\lab10\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lab10\\Downloads\\ReCalculator-main\\ReCalculator\\ReCalculator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lab10.LAB-RANGEL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lab10\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

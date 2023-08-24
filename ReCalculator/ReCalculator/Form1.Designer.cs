@@ -49,7 +49,7 @@
             Seven = new Button();
             Clear = new Button();
             Multiply = new Button();
-            button2 = new Button();
+            Division = new Button();
             Backspace = new Button();
             Display = new TextBox();
             Container.SuspendLayout();
@@ -77,7 +77,7 @@
             Container.Controls.Add(Seven);
             Container.Controls.Add(Clear);
             Container.Controls.Add(Multiply);
-            Container.Controls.Add(button2);
+            Container.Controls.Add(Division);
             Container.Controls.Add(Backspace);
             Container.Controls.Add(Display);
             Container.FlatStyle = FlatStyle.Popup;
@@ -153,6 +153,7 @@
             Zero.Size = new Size(64, 64);
             Zero.TabIndex = 18;
             Zero.UseVisualStyleBackColor = false;
+            Zero.Click += OnButtonPress;
             // 
             // DarkSwitch
             // 
@@ -182,7 +183,7 @@
             Three.Size = new Size(64, 64);
             Three.TabIndex = 15;
             Three.UseVisualStyleBackColor = false;
-            Three.Click += AddNumber;
+            Three.Click += OnButtonPress;
             // 
             // Two
             // 
@@ -198,7 +199,7 @@
             Two.Size = new Size(64, 64);
             Two.TabIndex = 14;
             Two.UseVisualStyleBackColor = false;
-            Two.Click += AddNumber;
+            Two.Click += OnButtonPress;
             // 
             // One
             // 
@@ -214,7 +215,7 @@
             One.Size = new Size(64, 64);
             One.TabIndex = 13;
             One.UseVisualStyleBackColor = false;
-            One.Click += AddNumber;
+            One.Click += OnButtonPress;
             // 
             // Plus
             // 
@@ -230,6 +231,7 @@
             Plus.Size = new Size(64, 64);
             Plus.TabIndex = 12;
             Plus.UseVisualStyleBackColor = false;
+            Plus.Click += OnButtonPress;
             // 
             // Six
             // 
@@ -245,7 +247,7 @@
             Six.Size = new Size(64, 64);
             Six.TabIndex = 11;
             Six.UseVisualStyleBackColor = false;
-            Six.Click += AddNumber;
+            Six.Click += OnButtonPress;
             // 
             // Five
             // 
@@ -261,7 +263,7 @@
             Five.Size = new Size(64, 64);
             Five.TabIndex = 10;
             Five.UseVisualStyleBackColor = false;
-            Five.Click += AddNumber;
+            Five.Click += OnButtonPress;
             // 
             // Four
             // 
@@ -277,7 +279,7 @@
             Four.Size = new Size(64, 64);
             Four.TabIndex = 9;
             Four.UseVisualStyleBackColor = false;
-            Four.Click += AddNumber;
+            Four.Click += OnButtonPress;
             // 
             // Minus
             // 
@@ -293,6 +295,7 @@
             Minus.Size = new Size(64, 64);
             Minus.TabIndex = 8;
             Minus.UseVisualStyleBackColor = false;
+            Minus.Click += OnButtonPress;
             // 
             // Nine
             // 
@@ -308,7 +311,7 @@
             Nine.Size = new Size(64, 64);
             Nine.TabIndex = 7;
             Nine.UseVisualStyleBackColor = false;
-            Nine.Click += AddNumber;
+            Nine.Click += OnButtonPress;
             // 
             // Eight
             // 
@@ -324,7 +327,7 @@
             Eight.Size = new Size(64, 64);
             Eight.TabIndex = 6;
             Eight.UseVisualStyleBackColor = false;
-            Eight.Click += AddNumber;
+            Eight.Click += OnButtonPress;
             // 
             // Seven
             // 
@@ -340,7 +343,7 @@
             Seven.Size = new Size(64, 64);
             Seven.TabIndex = 5;
             Seven.UseVisualStyleBackColor = false;
-            Seven.Click += AddNumber;
+            Seven.Click += OnButtonPress;
             // 
             // Clear
             // 
@@ -356,6 +359,7 @@
             Clear.Size = new Size(64, 64);
             Clear.TabIndex = 4;
             Clear.UseVisualStyleBackColor = false;
+            Clear.Click += OnButtonPress;
             // 
             // Multiply
             // 
@@ -372,24 +376,26 @@
             Multiply.TabIndex = 3;
             Multiply.TextAlign = ContentAlignment.MiddleRight;
             Multiply.UseVisualStyleBackColor = false;
+            Multiply.Click += OnButtonPress;
             // 
-            // button2
+            // Division
             // 
-            button2.BackColor = Color.FromArgb(250, 150, 56);
-            button2.FlatAppearance.BorderColor = Color.FromArgb(214, 121, 44);
-            button2.FlatAppearance.BorderSize = 4;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Impact", 28F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Image = Properties.Resources.Division;
-            button2.Location = new Point(90, 124);
-            button2.Margin = new Padding(7);
-            button2.Name = "button2";
-            button2.RightToLeft = RightToLeft.No;
-            button2.Size = new Size(64, 64);
-            button2.TabIndex = 2;
-            button2.Text = " ";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            Division.BackColor = Color.FromArgb(250, 150, 56);
+            Division.FlatAppearance.BorderColor = Color.FromArgb(214, 121, 44);
+            Division.FlatAppearance.BorderSize = 4;
+            Division.FlatStyle = FlatStyle.Flat;
+            Division.Font = new Font("Impact", 28F, FontStyle.Bold, GraphicsUnit.Point);
+            Division.Image = Properties.Resources.Division;
+            Division.Location = new Point(90, 124);
+            Division.Margin = new Padding(7);
+            Division.Name = "Division";
+            Division.RightToLeft = RightToLeft.No;
+            Division.Size = new Size(64, 64);
+            Division.TabIndex = 2;
+            Division.Text = " ";
+            Division.TextAlign = ContentAlignment.MiddleLeft;
+            Division.UseVisualStyleBackColor = false;
+            Division.Click += OnButtonPress;
             // 
             // Backspace
             // 
@@ -404,6 +410,7 @@
             Backspace.Size = new Size(64, 64);
             Backspace.TabIndex = 1;
             Backspace.UseVisualStyleBackColor = false;
+            Backspace.Click += OnButtonPress;
             // 
             // Display
             // 
@@ -450,7 +457,7 @@
         private Button Seven;
         private Button Clear;
         private Button Multiply;
-        private Button button2;
+        private Button Division;
         private Button Backspace;
         private TextBox Display;
         private Label Operation;

@@ -2,7 +2,10 @@ namespace ReCalculator
 {
     public partial class Form1 : Form
     {
-        //private int[] n1 = new int[9];
+
+        private string displayValue;
+        private string subDisplayValue;
+        private string operationValue;
 
         public Form1()
         {
@@ -11,66 +14,150 @@ namespace ReCalculator
 
         private void ClearDisplay()
         {
-            Display.Text = string.Empty;
-        }
-
-        private void UpdateNumber(int number)
-        {
-            /*for(int i = 0; i < n1.Length; i++)
+            if (displayValue != "") displayValue = "";
+            else
             {
-                n1[0] = number;
-                if (n1[i] == null) {
-                    n1[i] = number;
-                    break;
-                }
+                subDisplayValue = "";
+                operationValue = "";
             }
-            System.Console.WriteLine(n1[0]);
-            Display.Text = n1.ToString();
-            */
+            UpdateDisplay();
         }
 
-        private void AddNumber(object sender, EventArgs e)
+        private void BackErase()
+        {
+            displayValue = displayValue.Remove(displayValue.Length - 1);
+            UpdateDisplay();
+        }
+
+        private void UpdateDisplay()
+        {
+            Display.Text = displayValue;
+            SubDisplay.Text = subDisplayValue;
+            Operation.Text = operationValue;
+        }
+
+        private void AddNumber(string number)
+        {
+            displayValue += number;
+            UpdateDisplay();
+        }
+
+        private string Operate(string a, string b, string op)
+        {
+            float n1 = float.Parse(a);
+            float n2 = float.Parse(b);
+            float result = 0;
+            string resultTxt;
+
+            switch (op)
+            {
+                case "+":
+                    result = n1 + n2;
+                    break;
+                case "-":
+                    result = n1 - n2;
+                    break;
+                case "*":
+                    result = n1 * n2;
+                    break;
+                case "/":
+                    result = n1 / n2;
+                    break;
+            }
+            resultTxt = result.ToString();
+            return resultTxt;
+        }
+
+        private void OnEqualPress()
+        {
+            if(subDisplayValue != "" && displayValue != "" && operationValue != "")
+            {
+                displayValue = Operate(subDisplayValue, displayValue, operationValue);
+            }
+            UpdateDisplay();
+        }
+
+        private void OperationPress(string op)
+        {
+            if (displayValue != "" || subDisplayValue != "")
+            {
+                switch (op)
+                {
+                    case "+":
+                        operationValue = "+";
+                        break;
+                    case "-":
+                        operationValue = "-";
+                        break;
+                    case "*":
+                        operationValue = "x";
+                        break;
+                    case "/":
+                        operationValue = "/";
+                        break;
+                }
+                if(displayValue != "") subDisplayValue = displayValue;
+                ClearDisplay();
+            }
+        }
+
+        private void OnButtonPress(object sender, EventArgs e)
         {
             switch (((sender as Button).Name))
             {
+                case "Equal":
+                    OnEqualPress();
+                    break;
+                case "Plus":
+                    OperationPress("+");
+                    break;
+                case "Minus":
+                    OperationPress("-");
+                    break;
+                case "Multiply":
+                    OperationPress("*");
+                    break;
+                case "Division":
+                    OperationPress("/");
+                    break;
+                case "Backspace":
+                    BackErase();
+                    break;
                 case "Clear":
                     ClearDisplay();
                     break;
                 case "Zero":
-                    UpdateNumber(0);
-                    Display.Text += "0";
+                    AddNumber("0");
                     break;
                 case "One":
-                    UpdateNumber(1);
-                    Display.Text += "1";
+                    AddNumber("1");
                     break;
                 case "Two":
-                    Display.Text += "2";
+                    AddNumber("2");
                     break;
                 case "Three":
-                    Display.Text += "3";
+                    AddNumber("3");
                     break;
                 case "Four":
-                    Display.Text += "4";
+                    AddNumber("4");
                     break;
                 case "Five":
-                    Display.Text += "5";
+                    AddNumber("5");
                     break;
                 case "Six":
-                    Display.Text += "6";
+                    AddNumber("6");
                     break;
                 case "Seven":
-                    Display.Text += "7";
+                    AddNumber("7");
                     break;
                 case "Eight":
-                    Display.Text += "8";
+                    AddNumber("8");
                     break;
                 case "Nine":
-                    Display.Text += "9";
+                    AddNumber("9");
                     break;
             }
 
         }
-
     }
 }
