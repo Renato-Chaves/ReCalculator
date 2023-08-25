@@ -3,21 +3,36 @@ namespace ReCalculator
     public partial class Form1 : Form
     {
 
-        private string displayValue;
-        private string subDisplayValue;
-        private string operationValue;
+        private string displayValue = "";
+        private string subDisplayValue = "";
+        private string subDisplay2Value = "";
+        private string operationValue = "";
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void CleanDisplay()
+        {
+            displayValue = "";
+            subDisplayValue = "";
+            subDisplay2Value = "";
+            operationValue = "";
+        }
+
         private void ClearDisplay()
         {
-            if (displayValue != "") displayValue = "";
+            if (displayValue != "")
+            {
+                displayValue = "";
+                subDisplayValue = subDisplay2Value;
+                subDisplay2Value = "";
+            }
             else
             {
                 subDisplayValue = "";
+                subDisplay2Value = "";
                 operationValue = "";
             }
             UpdateDisplay();
@@ -25,14 +40,19 @@ namespace ReCalculator
 
         private void BackErase()
         {
-            displayValue = displayValue.Remove(displayValue.Length - 1);
-            UpdateDisplay();
+            if (displayValue.Length > 0)
+            {
+                displayValue = displayValue.Remove(displayValue.Length - 1);
+                UpdateDisplay();
+            }
         }
 
         private void UpdateDisplay()
         {
             Display.Text = displayValue;
-            SubDisplay.Text = subDisplayValue;
+            if (subDisplay2Value == "") SubDisplay.Text = subDisplayValue;
+            else SubDisplay.Text = subDisplay2Value+" "+operationValue+" "+subDisplayValue+" = ";
+            //SubDisplay.Text = subDisplayValue + subDisplay2Value;
             Operation.Text = operationValue;
         }
 
@@ -57,7 +77,7 @@ namespace ReCalculator
                 case "-":
                     result = n1 - n2;
                     break;
-                case "*":
+                case "x":
                     result = n1 * n2;
                     break;
                 case "/":
@@ -70,9 +90,19 @@ namespace ReCalculator
 
         private void OnEqualPress()
         {
-            if(subDisplayValue != "" && displayValue != "" && operationValue != "")
+            if (subDisplayValue != "" && displayValue != "" && operationValue != "")
             {
-                displayValue = Operate(subDisplayValue, displayValue, operationValue);
+                if(subDisplay2Value == "")
+                {
+                    subDisplay2Value = subDisplayValue;
+                    subDisplayValue = displayValue;
+                    displayValue = Operate(subDisplay2Value, displayValue, operationValue);
+                }
+                else
+                {
+                    subDisplay2Value = displayValue;
+                    displayValue = Operate(displayValue, subDisplayValue, operationValue);
+                }
             }
             UpdateDisplay();
         }
@@ -81,6 +111,7 @@ namespace ReCalculator
         {
             if (displayValue != "" || subDisplayValue != "")
             {
+                subDisplay2Value = "";
                 switch (op)
                 {
                     case "+":
@@ -89,15 +120,24 @@ namespace ReCalculator
                     case "-":
                         operationValue = "-";
                         break;
-                    case "*":
+                    case "x":
                         operationValue = "x";
                         break;
                     case "/":
                         operationValue = "/";
                         break;
                 }
-                if(displayValue != "") subDisplayValue = displayValue;
-                ClearDisplay();
+                if (displayValue != "")
+                {
+                    subDisplayValue = displayValue;
+                    displayValue = "";
+                }
+                else if (subDisplayValue != "" && operationValue == Operation.Text)
+                {
+                    subDisplayValue = displayValue;
+                    displayValue = "";
+                }
+                UpdateDisplay();
             }
         }
 
@@ -115,7 +155,7 @@ namespace ReCalculator
                     OperationPress("-");
                     break;
                 case "Multiply":
-                    OperationPress("*");
+                    OperationPress("x");
                     break;
                 case "Division":
                     OperationPress("/");

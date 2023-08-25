@@ -123,6 +123,7 @@
             Equal.Size = new Size(64, 142);
             Equal.TabIndex = 20;
             Equal.UseVisualStyleBackColor = false;
+            Equal.Click += OnButtonPress;
             // 
             // Decimal
             // 
