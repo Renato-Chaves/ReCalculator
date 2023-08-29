@@ -139,6 +139,7 @@
             Decimal.Size = new Size(64, 64);
             Decimal.TabIndex = 19;
             Decimal.UseVisualStyleBackColor = false;
+            Decimal.Click += OnButtonPress;
             // 
             // Zero
             // 
@@ -162,7 +163,6 @@
             DarkSwitch.FlatAppearance.BorderColor = SystemColors.ButtonShadow;
             DarkSwitch.FlatAppearance.BorderSize = 4;
             DarkSwitch.FlatStyle = FlatStyle.Flat;
-            DarkSwitch.Image = Properties.Resources.DarkSwitch;
             DarkSwitch.Location = new Point(14, 436);
             DarkSwitch.Margin = new Padding(7);
             DarkSwitch.Name = "DarkSwitch";

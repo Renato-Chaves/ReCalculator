@@ -51,7 +51,7 @@ namespace ReCalculator
         {
             Display.Text = displayValue;
             if (subDisplay2Value == "") SubDisplay.Text = subDisplayValue;
-            else SubDisplay.Text = subDisplay2Value+" "+operationValue+" "+subDisplayValue+" = ";
+            else SubDisplay.Text = subDisplay2Value + " " + operationValue + " " + subDisplayValue + " = ";
             //SubDisplay.Text = subDisplayValue + subDisplay2Value;
             Operation.Text = operationValue;
         }
@@ -92,7 +92,7 @@ namespace ReCalculator
         {
             if (subDisplayValue != "" && displayValue != "" && operationValue != "")
             {
-                if(subDisplay2Value == "")
+                if (subDisplay2Value == "")
                 {
                     subDisplay2Value = subDisplayValue;
                     subDisplayValue = displayValue;
@@ -145,6 +145,10 @@ namespace ReCalculator
         {
             switch (((sender as Button).Name))
             {
+                case "Decimal":
+                    if (!(displayValue.Contains(","))) displayValue += ",";
+                    UpdateDisplay();
+                    break;
                 case "Equal":
                     OnEqualPress();
                     break;
